@@ -1,5 +1,9 @@
 module.exports = [
-	'student-one',
-	'student-two',
-	'student-three'
+	'DonChatelain',
+	'YvonneHayes',
+	'araedavis',
+	'billyham',
+	'goodwid',
+	'jluangphasy',
+	'katesowles'
 ];
