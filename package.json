@@ -1,0 +1,22 @@
+{
+  "name": "make-branches",
+  "version": "1.0.0",
+  "description": "Add branches from a repo to it's remote",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codefellows-portland-javascript-401d2/make-branches.git"
+  },
+  "author": "Marty Nelson <marty@martypdx.com> (@martypdx)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codefellows-portland-javascript-401d2/make-branches/issues"
+  },
+  "homepage": "https://github.com/codefellows-portland-javascript-401d2/make-branches#readme",
+  "dependencies": {
+    "nodegit": "^0.13.0"
+  }
+}
