@@ -11,3 +11,20 @@ Use like:
 ```sh
 > node . ../assignment-repo
 ```
+
+```env
+GITHUB_TOKEN=<github token>
+GITHUB_ORGANIZATION=<github org>
+TRAVIS_TOKEN=<travis token>
+```
+
+
+blacklist master on travis
+
+shopt -s extglob dotglob
+mkdir DonChatelain
+mv ./!(DonChatelain|.git|LAB.md) ./DonChatelain/
+git add .
+git commit -m 'move student work to DonChatelain'
+git checkout master
+git merge DonChatelain

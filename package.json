@@ -4,7 +4,7 @@
   "description": "Add branches from a repo to it's remote",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "env $(cat .env) node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/codefellows-portland-javascript-401d2/make-branches#readme",
   "dependencies": {
-    "nodegit": "^0.13.0"
+    "github-api": "^1.2.1",
+    "nodegit": "^0.13.0",
+    "request": "^2.72.0"
   }
 }

@@ -1,39 +1,16 @@
-const students = require( './students-or-teams' );
+const addBranches = require( './lib/add-branches' );
+const hooks = require( './lib/ci-hooks' );
 
-const Git = require( 'nodegit' );
-const pathToRepo = require( 'path' ).resolve( process.argv[2] || '.' );
-process.chdir( pathToRepo );
-const execSync = require('child_process').execSync;
+const repoName = process.argv[2];
 
-var repo, remote;
+if( !repoName ) throw new Error( 'repo name must be provided' );
 
-Git.Repository.open(pathToRepo)
-	.then( _repo => repo = _repo )
-	.then( repo => repo.getRemote( 'origin' ) )
-	.then( _remote => remote = _remote )
-	.then( () => repo.getHeadCommit() )
-	.then( commit => {
-		return Promise.all( students.map( student => repo.createBranch(
-			student,
-			commit,
-			false,
-			repo.defaultSignature(),
-			`Created ${student} on HEAD`)	
-		))
-	})
+// addBranches( repoName )
+// 	.then( () => console.log( 'branches created' ) )
+// 	.then( () => hooks( repoName ) )
+// 	.then( () => console.log( 'hooks complete' ) )
+// 	.catch( err => console.log( 'FAIL', err.message ) );
 	
-	/* not currently woking with nodegit :( */
-	// .then( branch => {
-	// 	console.log( branch.toString(), repo.defaultSignature() )
-	// 	return remote.push( [ branch.toString() ], new Git.PushOptions() ) 
-	// })
-	// .then( number => console.log( 'push completed with', number ) )
-	
-	/* so let's just shell out */
-	.then( branches => {
-		return students.map( student => {
-			return execSync( `git push -u origin ${student}`, { encoding: 'utf-8' } ); 
-		})
-	})
-	.then( results => results.forEach( r => console.log( r ) ) )
-	.catch( err => console.log( err ) );
+	hooks( repoName )
+		.then( () => console.log( 'hooks complete' ) )
+		.catch( err => console.log( 'FAIL', err.message ) );
