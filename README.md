@@ -12,6 +12,13 @@ Use like:
 > node . ../assignment-repo
 ```
 
+```env
+GITHUB_TOKEN=<github token>
+GITHUB_ORGANIZATION=<github org>
+TRAVIS_TOKEN=<travis token>
+```
+
+
 blacklist master on travis
 
 shopt -s extglob dotglob
