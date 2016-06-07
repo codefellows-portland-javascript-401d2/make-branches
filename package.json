@@ -20,6 +20,7 @@
     "github-api": "^1.2.1",
     "nodegit": "^0.13.1",
     "request": "^2.72.0",
+    "sander": "^0.5.1",
     "sync-exec": "^0.6.2"
   }
 }

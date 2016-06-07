@@ -1,9 +1,9 @@
 const addBranches = require( './lib/add-branches' );
 const hooks = require( './lib/ci-hooks' );
 
-const repoName = process.argv[2];
+const repoName = process.argv[2] || 'respond-accordingly';
 
-if( !repoName ) throw new Error( 'repo name must be provided' );
+// if( !repoName ) throw new Error( 'repo name must be provided' );
 
 // addBranches( repoName )
 // 	.then( () => console.log( 'branches created' ) )
@@ -16,5 +16,5 @@ if( !repoName ) throw new Error( 'repo name must be provided' );
 	// 	.catch( err => console.log( 'FAIL', err.message ) );
 
 
-console.log('plz respond');
+// console.log('plz respond');
 require('./lib/close-out')(repoName);
