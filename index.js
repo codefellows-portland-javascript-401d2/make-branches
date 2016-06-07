@@ -10,7 +10,11 @@ if( !repoName ) throw new Error( 'repo name must be provided' );
 // 	.then( () => hooks( repoName ) )
 // 	.then( () => console.log( 'hooks complete' ) )
 // 	.catch( err => console.log( 'FAIL', err.message ) );
-	
-	hooks( repoName )
-		.then( () => console.log( 'hooks complete' ) )
-		.catch( err => console.log( 'FAIL', err.message ) );
+
+	// hooks( repoName )
+	// 	.then( () => console.log( 'hooks complete' ) )
+	// 	.catch( err => console.log( 'FAIL', err.message ) );
+
+
+console.log('plz respond');
+require('./lib/close-out')(repoName);
