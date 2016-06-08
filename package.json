@@ -4,7 +4,7 @@
   "description": "Add branches from a repo to it's remote",
   "main": "index.js",
   "scripts": {
-    "start": "env $(cat .env) node index.js"
+    "start": "env $(cat .env) node command.js"
   },
   "repository": {
     "type": "git",
