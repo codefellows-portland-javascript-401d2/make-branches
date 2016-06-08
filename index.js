@@ -11,9 +11,9 @@ const repoName = process.argv[2] || 'respond-accordingly';
 // 	.then( () => console.log( 'hooks complete' ) )
 // 	.catch( err => console.log( 'FAIL', err.message ) );
 
-	// hooks( repoName )
-	// 	.then( () => console.log( 'hooks complete' ) )
-	// 	.catch( err => console.log( 'FAIL', err.message ) );
+// 	hooks( repoName )
+// 		.then( () => console.log( 'hooks complete' ) )
+// 		.catch( err => console.log( 'FAIL', err.message ) );
 
 
 // console.log('plz respond');
