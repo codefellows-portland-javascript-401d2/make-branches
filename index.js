@@ -1,7 +1,9 @@
-const addBranches = require( './lib/add-branches' );
-const hooks = require( './lib/ci-hooks' );
+require(__dirname + '/command.js')
 
-const repoName = process.argv[2] || 'respond-accordingly';
+// const addBranches = require( './lib/add-branches' );
+// const hooks = require( './lib/ci-hooks' );
+
+// const repoName = process.argv[2] || 'respond-accordingly';
 
 // if( !repoName ) throw new Error( 'repo name must be provided' );
 
@@ -17,4 +19,4 @@ const repoName = process.argv[2] || 'respond-accordingly';
 
 
 // console.log('plz respond');
-require('./lib/close-out')(repoName);
+// require('./lib/close-out')(repoName);

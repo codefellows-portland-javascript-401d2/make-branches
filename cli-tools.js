@@ -8,7 +8,7 @@ exports.getConfigs = () => {
   return sander.readFile(__dirname, 'config.json')
       .then(data => JSON.parse(data))
       .then(configs => {
-        if (!(configs.github_org && configs.github_token && configs.travis_token)) {
+        if (!(configs.github_org && configs.github_token)) {
           throw 'configs not defined'
         }
         return configs;
