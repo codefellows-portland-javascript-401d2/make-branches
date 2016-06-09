@@ -12,7 +12,9 @@ program
 
 program
   .command('setup [repoName]')
+  .description('create branches for each team')
   .action((repoName, options) => {
+    if (!repoName) return console.log('[*] plz specify repo name');
     addBranches( repoName )
     	.then( () => console.log( 'branches created' ) )
     	.then( () => hooks( repoName ) )
@@ -22,7 +24,9 @@ program
 
 program
   .command('close [repoName]')
+  .description('merge student branches into master folders')
   .action((repoName, options) => {
+    if (!repoName) return console.log('[*] plz specify repo name');
     close(repoName);
   })
 
