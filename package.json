@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/codefellows-portland-javascript-401d2/make-branches#readme",
   "dependencies": {
+    "chalk": "^1.1.3",
     "github-api": "^1.2.1",
     "nodegit": "^0.13.1",
     "request": "^2.72.0",
