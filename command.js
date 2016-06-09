@@ -3,9 +3,9 @@ const program = require('commander')
 const addBranches = require('./lib/add-branches')
 const hooks = require('./lib/ci-hooks')
 const close = require('./lib/close-out')
-const config = require( './lib/config' )
+// const config = require( './lib/config' )
 const sander = require('sander');
-const chalk = require('chalk');
+const {alert, alertErr, getConfigs} = require(__dirname+'/cli-tools');
 
 program
   .command('config [github_org] [github_token] [travis_token]')
@@ -26,23 +26,37 @@ program
   .command('setup [repoName]')
   .description('create branches for each team')
   .action((repoName, options) => {
-    if (!repoName) return alertErr('plz specify repo name');
-    addBranches( repoName )
-    	.then( () => alert( 'branches created' ) )
-    	.then( () => hooks( repoName ) )
-    	.then( () => alert( 'hooks complete' ) )
-    	.catch( err => alertErr( 'FAIL', err.message ) );
+    getConfigs()
+      .then((configs) => {
+        if (!repoName) return alertErr('plz specify repo name');
+        addBranches( repoName, configs )
+          .then( () => alert( 'branches created' ) )
+          .then( () => hooks( repoName, configs ) )
+          .then( () => alert( 'hooks complete' ) )
+          .catch( err => {
+            alertErr( 'error retreiving configs. run config' )
+            console.log(err);
+          } );
+      })
+      .catch(err => {
+        alertErr('error setting up repo');
+        console.log(err);
+      })
   })
 
 program
   .command('close [repoName]')
   .description('merge student branches into master folders')
   .action((repoName, options) => {
-    if (!repoName) return alertErr('plz specify repo name');
-    close(repoName);
+    getConfigs()
+      .then((configs) => {
+        if (!repoName) return alertErr('plz specify repo name');
+        close(repoName, configs);
+      })
+      .catch(err => {
+        alertErr('error retreiving configs. run config');
+        console.log(err);
+      })
   })
 
 program.parse(process.argv)
-
-function alert(msg) {console.log(chalk.green('[*]', msg))}
-function alertErr(msg) {console.log(chalk.red('[x]', msg))}
